@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国古生物学会天体生物学分会</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2c5f8a;
+    --accent: #c44536;
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --text: #2d2d2d;
+    --text-light: #666;
+    --border: #e8ecf0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif", "STSong", "SimSun", serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.8;
+  }
+
+  /* ===== Header / Nav ===== */
+  header {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+  }
+  .header-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 0 24px; height: 68px;
+  }
+  .logo-area {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+  }
+  .logo-area img {
+    width: 42px; height: 42px; border-radius: 50%;
+    object-fit: cover;
+  }
+  .logo-text {
+    font-size: 15px; font-weight: 700;
+    color: var(--primary); letter-spacing: 1px;
+    line-height: 1.3;
+  }
+  .logo-text small {
+    font-size: 12px; font-weight: 400;
+    color: var(--text-light); letter-spacing: 0;
+    display: block; margin-top: -2px;
+  }
+
+  nav { display: flex; gap: 6px; }
+  nav a {
+    text-decoration: none; color: var(--text);
+    font-size: 14px; padding: 6px 16px;
+    border-radius: 4px; transition: 0.2s;
+  }
+  nav a:hover { background: var(--primary); color: #fff; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+
+  /* ===== Sections ===== */
+  section { padding: 100px 24px 80px; max-width: 1000px; margin: 0 auto; }
+  .section-title {
+    font-size: 26px; font-weight: 700; color: var(--primary);
+    border-left: 4px solid var(--accent);
+    padding-left: 16px; margin-bottom: 36px;
+  }
+  .section-sub { font-size: 14px; color: var(--text-light); margin-top: -28px; margin-bottom: 36px; padding-left: 20px; }
+
+  /* ===== Home Hero ===== */
+  #home {
+    padding-top: 168px; padding-bottom: 100px;
+    text-align: center;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    max-width: none;
+  }
+  #home .hero-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+  #home .hero-logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  #home h1 { font-size: 36px; color: var(--primary); margin-bottom: 12px; letter-spacing: 2px; }
+  #home .subtitle { font-size: 18px; color: var(--text-light); margin-bottom: 20px; }
+  #home .affil {
+    display: inline-block; background: var(--primary); color: #fff;
+    padding: 8px 24px; border-radius: 20px;
+    font-size: 14px; letter-spacing: 1px;
+  }
+  #home .desc { margin-top: 32px; font-size: 15px; color: var(--text); max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  /* ===== About ===== */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .about-card {
+    background: var(--card); border-radius: 8px; padding: 28px;
+    border: 1px solid var(--border);
+  }
+  .about-card h3 { font-size: 16px; color: var(--primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .about-card p, .about-card li { font-size: 14px; line-height: 1.9; color: var(--text); }
+  .about-card ul { list-style: none; padding: 0; }
+  .about-card ul li::before { content: "▸ "; color: var(--primary-light); }
+
+  /* ===== Council ===== */
+  .leader-grid, .secretary-grid { display: grid; gap: 16px; margin-bottom: 32px; }
+  .leader-grid { grid-template-columns: 1fr; }
+  .secretary-grid { grid-template-columns: 1fr 1fr; }
+
+  .member-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .member-card .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700; flex-shrink: 0;
+  }
+  .member-card .info { flex: 1; }
+  .member-card .name { font-size: 16px; font-weight: 700; color: var(--primary); }
+  .member-card .role {
+    display: inline-block; font-size: 12px;
+    background: var(--primary); color: #fff;
+    padding: 1px 10px; border-radius: 10px; margin-left: 8px;
+  }
+  .member-card .unit { font-size: 13px; color: var(--text-light); margin-top: 2px; }
+  .member-card .field { font-size: 13px; color: var(--text); margin-top: 2px; }
+
+  .council-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .council-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 6px; padding: 14px 18px;
+  }
+  .council-item .name { font-size: 14px; font-weight: 700; color: var(--primary); }
+  .council-item .unit { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+  .council-item .field { font-size: 12px; color: var(--text); margin-top: 2px; }
+
+  /* ===== Activities ===== */
+  .activity-list { list-style: none; }
+  .activity-list li {
+    padding: 20px 24px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  .activity-list li .date { font-size: 13px; color: var(--accent); font-weight: 700; }
+  .activity-list li .title { font-size: 15px; margin: 4px 0; }
+  .activity-list li .desc { font-size: 13px; color: var(--text-light); }
+
+  /* ===== Contact ===== */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 28px;
+  }
+  .contact-card h3 { font-size: 16px; color: var(--primary); margin-bottom: 12px; }
+  .contact-card p { font-size: 14px; line-height: 2; }
+  .contact-card .label { color: var(--text-light); display: inline-block; width: 70px; }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--primary); color: rgba(255,255,255,0.85);
+    text-align: center; padding: 32px 24px; font-size: 13px;
+    line-height: 2;
+  }
+  footer strong { color: #fff; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    nav { display: none; }
+    nav.open { display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: #fff; padding: 12px; border-bottom: 1px solid var(--border); }
+    .hamburger { display: flex; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .secretary-grid { grid-template-columns: 1fr; }
+    .leader-grid { grid-template-columns: 1fr; }
+    #home h1 { font-size: 26px; }
+    .logo-text { font-size: 15px; }
+    .member-card { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== Header ====== -->
+<header>
+  <div class="header-inner">
+    <a href="#home" class="logo-area">
+      <img src="logo.jpg" alt="分会logo">
+      <div class="logo-text">
+        中国古生物学会<br>天体生物学分会
+      </div>
+    </a>
+    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <a href="#home">首页</a>
+      <a href="#about">分会概况</a>
+      <a href="#council">理事会</a>
+      <a href="#activities">学术活动</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ====== 首页 ====== -->
+<section id="home">
+  <div class="hero-inner">
+    <img src="logo.jpg" alt="" class="hero-logo">
+    <h1>中国古生物学会天体生物学分会</h1>
+    <p class="subtitle">Astrobiology Branch of the Chinese Palaeontological Society</p>
+    <p class="desc">
+      天体生物学分会致力于推动我国天体生物学领域的学术交流与合作，促进早期地球生命起源演化、
+      地外宜居性、深空探测等前沿领域的交叉研究，搭建地球科学与空间科学之间的桥梁。
+    </p>
+  </div>
+</section>
+
+<!-- ====== 分会概况 ====== -->
+<section id="about">
+  <h2 class="section-title">分会概况</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>成立背景</h3>
+      <p>天体生物学是研究宇宙中生命的起源、演化、分布及其未来的交叉学科。中国古生物学会天体生物学分会于近年正式成立，旨在整合国内天体生物学研究力量，促进多学科交叉融合。</p>
+    </div>
+    <div class="about-card">
+      <h3>宗旨目标</h3>
+      <ul>
+        <li>推动天体生物学领域的学术交流与合作</li>
+        <li>促进地球科学与空间科学的交叉融合</li>
+        <li>培养天体生物学青年人才</li>
+        <li>提升我国天体生物学研究的国际影响力</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>研究方向</h3>
+      <ul>
+        <li>早期地球生命起源与演化</li>
+        <li>火星/地外海洋宜居性</li>
+        <li>前生命有机质合成</li>
+        <li>极端环境微生物</li>
+        <li>陨石与太阳系早期演化</li>
+        <li>系外行星与生命探寻</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>挂靠单位</h3>
+      <p>分会挂靠于<strong>中国科学院南京地质古生物研究所</strong>，依托南古所在早期生命演化与古生物学领域的深厚积累，为天体生物学研究提供坚实的学术支撑。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 理事会 ====== -->
+<section id="council">
+  <h2 class="section-title">理事会</h2>
+  <p class="section-sub">第一届理事会成员名单</p>
+
+  <!-- 理事长 -->
+  <h3 style="font-size:16px;color:var(--primary);margin-bottom:12px;">理事长</h3>
+  <div class="leader-grid">
+    <div class="member-card">
+      <div class="avatar">殷</div>
+      <div class="info">
+        <div class="name">殷宗军 <span class="role">理事长</span></div>
+        <div class="unit">中国科学院南京地质古生物研究所</div>
+        <div class="field">早期地球生命起源演化与天体生物学</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 副理事长 -->
+  <h3 style="font-size:16px;color:var(--primary);margin:24px 0 12px;">副理事长</h3>
+  <div class="leader-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="member-card">
+      <div class="avatar">沈</div>
+      <div class="info">
+        <div class="name">沈冰 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+        <div class="unit">北京大学</div>
+        <div class="field">早期地球宜居性演变与天体生物学</div>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="avatar">林</div>
+      <div class="info">
+        <div class="name">林巍 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+        <div class="unit">中国科学院地质与地球物理研究所</div>
+        <div class="field">类火星环境宜居性与地外生命信号</div>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="avatar">刘</div>
+      <div class="info">
+        <div class="name">刘洋 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+        <div class="unit">中国科学院空间中心</div>
+        <div class="field">火星探测与环境演化</div>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="avatar">屈</div>
+      <div class="info">
+        <div class="name">屈原皋 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+        <div class="unit">中国科学院深海科学与工程研究所</div>
+        <div class="field">地外海洋宜居性与生命信号探测</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 秘书长 -->
+  <h3 style="font-size:16px;color:var(--primary);margin:24px 0 12px;">秘书长 &amp; 副秘书长</h3>
+  <div class="secretary-grid">
+    <div class="member-card">
+      <div class="avatar">郝</div>
+      <div class="info">
+        <div class="name">郝记华 <span class="role">秘书长</span></div>
+        <div class="unit">中国科学技术大学</div>
+        <div class="field">冰卫星与早期地球宜居性演化</div>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="avatar">南</div>
+      <div class="info">
+        <div class="name">南景博 <span class="role" style="background:var(--primary-light);">副秘书长</span></div>
+        <div class="unit">中国科学院南京地质古生物研究所</div>
+        <div class="field">前生命有机质合成与生命起源</div>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="avatar">李</div>
+      <div class="info">
+        <div class="name">李嘉琪 <span class="role" style="background:var(--primary-light);">副秘书长</span></div>
+        <div class="unit">北京大学</div>
+        <div class="field">火星地质</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 理事 -->
+  <h3 style="font-size:16px;color:var(--primary);margin:24px 0 12px;">理事（按单位首字母排列）</h3>
+  <div class="council-grid" id="council-list"></div>
+</section>
+
+<!-- ====== 学术活动 ====== -->
+<section id="activities">
+  <h2 class="section-title">学术活动</h2>
+  <ul class="activity-list">
+    <li>
+      <div class="date">2026年8月</div>
+      <div class="title"><a href="https://mp.weixin.qq.com/s/tF10L7vTN_jtQWHal2riWA" target="_blank" style="color:var(--primary);text-decoration:none;">2026中国天体生物学暨大洋洲天体生物学联合会议</a></div>
+      <div class="desc">国际联合会议，促进中国与大洋洲天体生物学领域深度合作 <a href="https://mp.weixin.qq.com/s/tF10L7vTN_jtQWHal2riWA" target="_blank" style="color:var(--accent);font-size:13px;">详情 →</a></div>
+    </li>
+    <li>
+      <div class="date">2025年9月7日</div>
+      <div class="title"><a href="http://www.chinapsc.cn/xwdt/xwzx/202509/t20250911_770219.html" target="_blank" style="color:var(--primary);text-decoration:none;">中国古生物学会天体生物学分会正式成立</a></div>
+      <div class="desc">第一届会员代表大会暨第一届一次学术研讨会在南京召开，选举产生第一届理事会 <a href="http://www.chinapsc.cn/xwdt/xwzx/202509/t20250911_770219.html" target="_blank" style="color:var(--accent);font-size:13px;">详情 →</a></div>
+    </li>
+  </ul>
+</section>
+
+<!-- ====== 联系我们 ====== -->
+<section id="contact">
+  <h2 class="section-title">联系我们</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>分会联系方式</h3>
+      <p><span class="label">地址：</span>江苏省南京市玄武区北京东路39号</p>
+      <p><span class="label">单位：</span>中国科学院南京地质古生物研究所</p>
+      <p><span class="label">邮箱：</span>（待定）</p>
+    </div>
+    <div class="contact-card">
+      <h3>挂靠单位</h3>
+      <p>中国科学院南京地质古生物研究所</p>
+      <p style="margin-top:8px;font-size:13px;color:var(--text-light);">
+        南京地质古生物研究所是我国古生物学和地层学研究的专业机构，在早期生命演化领域享有国际盛誉，为天体生物学分会提供学术支撑。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Footer ====== -->
+<footer>
+  <p>中国古生物学会天体生物学分会</p>
+  <p>挂靠单位：<strong>中国科学院南京地质古生物研究所</strong></p>
+  <p style="margin-top:8px;font-size:12px;opacity:0.6;">&copy; 2026 中国古生物学会天体生物学分会 版权所有</p>
+</footer>
+
+<script>
+// 理事数据
+const councilors = [
+  ["罗根明","中国地质大学（武汉）","早期地球宜居性演化"],
+  ["赵健楠","中国地质大学（武汉）","火星环境演变"],
+  ["吴耿","中国地质大学（武汉）","极端环境微生物"],
+  ["盛益之","中国地质大学（北京）","微生物与矿物相互作用"],
+  ["王炜","国家天文台","地外行星与生命探寻"],
+  ["吕浩宇","北京航空航天大学","空间物理"],
+  ["符慧山","北京航空航天大学","空间环境与空间探测"],
+  ["史弦","上海天文台","小天体演化"],
+  ["蒋云","紫金山天文台","陨石与太阳系早期演化"],
+  ["陈果","紫金山天文台","系外行星"],
+  ["林莽","中国科学院广州地化所","早期地球及地外天体表生环境"],
+  ["唐红","中国科学院地球化学研究所","地外天体水和有机物的分布与演化"],
+  ["赵宇鴳","成都理工大学","火星环境演化"],
+  ["惠鹤九","南京大学","月球与行星化学"],
+  ["应见喜","宁波大学","前生命化学与生命起源"],
+  ["肖智勇","中山大学","天体撞击过程"],
+  ["张晓静","中国航天科技创新研究院","深空探测"],
+  ["黄康俊","西北大学","地球宜居环境演化"],
+  ["张宇","上海交通大学","深海极端环境微生物"],
+  ["范斯腾","南方科技大学","类地行星大气动力学"],
+  ["李子波","中国科学院南京地质古生物研究所","极端环境微生物与矿物相互作用"],
+  ["鞠昀","哈尔滨工业大学（威海）","微液滴与生命起源"],
+  ["刘嘉成","香港大学","火星地质学"],
+  ["黄婷","澳门科技大学","类火星环境微生物"],
+  ["李小双","中国科学院新疆生态与地理研究所","抗逆生物与火星拓殖"],
+  ["范晔","陆军军医大学","极端环境下的生命"],
+  ["张鑫","崂山实验室","—"],
+  ["刘长卿","深空探测实验室","深空探测与行星科学"],
+  ["魏广飞","深空探测实验室","深空探测与行星科学"],
+  ["张臻峰","深空探测实验室","深空探测与行星科学"],
+  ["罗茂","中国科学院南京地质古生物研究所","早期生命演化与天体生物学"]
+];
+
+// 按单位首字母排序
+councilors.sort((a,b) => a[1].localeCompare(b[1],'zh'));
+
+const container = document.getElementById('council-list');
+councilors.forEach(c => {
+  const div = document.createElement('div');
+  div.className = 'council-item';
+  div.innerHTML = `<div class="name">${c[0]}</div><div class="unit">${c[1]}</div><div class="field">${c[2]}</div>`;
+  container.appendChild(div);
+});
+
+// 导航点击关闭菜单
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('nav').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
