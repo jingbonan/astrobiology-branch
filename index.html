@@ -117,21 +117,23 @@
     border-radius: 8px; padding: 20px 24px;
     display: flex; align-items: center; gap: 20px;
   }
-  .member-card .avatar {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--primary); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; font-weight: 700; flex-shrink: 0;
+  .member-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 24px;
   }
-  .member-card .info { flex: 1; }
-  .member-card .name { font-size: 16px; font-weight: 700; color: var(--primary); }
+  .member-card .name { font-size: 16px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; }
   .member-card .role {
     display: inline-block; font-size: 12px;
     background: var(--primary); color: #fff;
-    padding: 1px 10px; border-radius: 10px; margin-left: 8px;
+    padding: 1px 12px; border-radius: 10px;
+    white-space: nowrap;
   }
-  .member-card .unit { font-size: 13px; color: var(--text-light); margin-top: 2px; }
-  .member-card .field { font-size: 13px; color: var(--text); margin-top: 2px; }
+  .member-card .unit { font-size: 13px; color: var(--text-light); }
+  .member-card .field { font-size: 13px; color: var(--text); }
+
+  .member-card.compact { padding: 16px 20px; }
 
   .council-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -184,7 +186,7 @@
     .leader-grid { grid-template-columns: 1fr; }
     #home h1 { font-size: 26px; }
     .logo-text { font-size: 15px; }
-    .member-card { flex-wrap: wrap; }
+
   }
 </style>
 </head>
@@ -269,12 +271,9 @@
   <h3 style="font-size:16px;color:var(--primary);margin-bottom:12px;">理事长</h3>
   <div class="leader-grid">
     <div class="member-card">
-      <div class="avatar">殷</div>
-      <div class="info">
-        <div class="name">殷宗军 <span class="role">理事长</span></div>
-        <div class="unit">中国科学院南京地质古生物研究所</div>
-        <div class="field">早期地球生命起源演化与天体生物学</div>
-      </div>
+      <div class="name">殷宗军 <span class="role">理事长</span></div>
+      <div class="unit">中国科学院南京地质古生物研究所</div>
+      <div class="field">早期地球生命起源演化与天体生物学</div>
     </div>
   </div>
 
@@ -282,36 +281,24 @@
   <h3 style="font-size:16px;color:var(--primary);margin:24px 0 12px;">副理事长</h3>
   <div class="leader-grid" style="grid-template-columns:1fr 1fr;">
     <div class="member-card">
-      <div class="avatar">沈</div>
-      <div class="info">
-        <div class="name">沈冰 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
-        <div class="unit">北京大学</div>
-        <div class="field">早期地球宜居性演变与天体生物学</div>
-      </div>
+      <div class="name">沈冰 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+      <div class="unit">北京大学</div>
+      <div class="field">早期地球宜居性演变与天体生物学</div>
     </div>
     <div class="member-card">
-      <div class="avatar">林</div>
-      <div class="info">
-        <div class="name">林巍 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
-        <div class="unit">中国科学院地质与地球物理研究所</div>
-        <div class="field">类火星环境宜居性与地外生命信号</div>
-      </div>
+      <div class="name">林巍 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+      <div class="unit">中国科学院地质与地球物理研究所</div>
+      <div class="field">类火星环境宜居性与地外生命信号</div>
     </div>
     <div class="member-card">
-      <div class="avatar">刘</div>
-      <div class="info">
-        <div class="name">刘洋 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
-        <div class="unit">中国科学院空间中心</div>
-        <div class="field">火星探测与环境演化</div>
-      </div>
+      <div class="name">刘洋 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+      <div class="unit">中国科学院空间中心</div>
+      <div class="field">火星探测与环境演化</div>
     </div>
     <div class="member-card">
-      <div class="avatar">屈</div>
-      <div class="info">
-        <div class="name">屈原皋 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
-        <div class="unit">中国科学院深海科学与工程研究所</div>
-        <div class="field">地外海洋宜居性与生命信号探测</div>
-      </div>
+      <div class="name">屈原皋 <span class="role" style="background:var(--primary-light);">副理事长</span></div>
+      <div class="unit">中国科学院深海科学与工程研究所</div>
+      <div class="field">地外海洋宜居性与生命信号探测</div>
     </div>
   </div>
 
@@ -319,28 +306,19 @@
   <h3 style="font-size:16px;color:var(--primary);margin:24px 0 12px;">秘书长 &amp; 副秘书长</h3>
   <div class="secretary-grid">
     <div class="member-card">
-      <div class="avatar">郝</div>
-      <div class="info">
-        <div class="name">郝记华 <span class="role">秘书长</span></div>
-        <div class="unit">中国科学技术大学</div>
-        <div class="field">冰卫星与早期地球宜居性演化</div>
-      </div>
+      <div class="name">郝记华 <span class="role">秘书长</span></div>
+      <div class="unit">中国科学技术大学</div>
+      <div class="field">冰卫星与早期地球宜居性演化</div>
     </div>
     <div class="member-card">
-      <div class="avatar">南</div>
-      <div class="info">
-        <div class="name">南景博 <span class="role" style="background:var(--primary-light);">副秘书长</span></div>
-        <div class="unit">中国科学院南京地质古生物研究所</div>
-        <div class="field">前生命有机质合成与生命起源</div>
-      </div>
+      <div class="name">南景博 <span class="role" style="background:var(--primary-light);">副秘书长</span></div>
+      <div class="unit">中国科学院南京地质古生物研究所</div>
+      <div class="field">前生命有机质合成与生命起源</div>
     </div>
     <div class="member-card">
-      <div class="avatar">李</div>
-      <div class="info">
-        <div class="name">李嘉琪 <span class="role" style="background:var(--primary-light);">副秘书长</span></div>
-        <div class="unit">北京大学</div>
-        <div class="field">火星地质</div>
-      </div>
+      <div class="name">李嘉琪 <span class="role" style="background:var(--primary-light);">副秘书长</span></div>
+      <div class="unit">北京大学</div>
+      <div class="field">火星地质</div>
     </div>
   </div>
 
